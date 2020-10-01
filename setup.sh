@@ -22,7 +22,7 @@ clear
 
 
 # Starting
-echo -e "$Yellow \n Starting V3... $Color_Off"
+echo -e "$Yellow \n Starting V4... $Color_Off"
 
 # System Update
 echo -e "$Purple \n Initializing System Updates... $Color_Off"
@@ -41,7 +41,7 @@ sudo yum install git -y  2>&1 >> setup.log
 cd /home/opc 2>&1 >> setup.log
 git clone https://github.com/valdecircarvalho/oci-fastforward.git 2>&1 >> setup.log
 cd /home/opc/oci-fastforward 
-
+clear
 
 # Finishing
 echo -e "$Yellow \n Finishing... $Color_Off"
