@@ -20,8 +20,9 @@ Cyan='\033[0;36m'         # Cyan
 
 clear
 
+
 # Starting
-echo -e "$Yellow \n Starting... $Color_Off"
+echo -e "$Yellow \n Starting V2... $Color_Off"
 
 # System Update
 echo -e "$Purple \n Initializing System Updates... $Color_Off"
