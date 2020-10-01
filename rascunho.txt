@@ -1,0 +1,53 @@
+export COMPART=ocid1.compartment.oc1..aaaaaaaaqrhexoi7esgkphvmeh6rgmaqrgrnsvswacc5kp3j4h3kfvfgznpq
+export TENANT=ocid1.tenancy.oc1..aaaaaaaai3tsviuw7k7jbkz65clzrhjxhzk5b7demz5p2bpnvocnjjnkysxa
+export COMP_NET=ocid1.tenancy.oc1..aaaaaaaai3tsviuw7k7jbkz65clzrhjxhzk5b7demz5p2bpnvocnjjnkysxa
+
+export SUBN_PUB=ocid1.subnet.oc1.sa-saopaulo-1.aaaaaaaanv5nniccxzkn6z5o5etuyurr2sj4pn55kbudwezfd6kpnedqoreq
+export IMD_ID=ocid1.image.oc1.sa-saopaulo-1.aaaaaaaakv32jzepulfomzobahsfgffqkfdjkhthoz53pqmjd7euk2hyctta
+
+
+OCI commands : 
+
+1 - Lista os dados do compute que tem o display-name conforme especificado
+                oci compute instance list --display-name vm-free -c $COMPART
+
+2 - Lista o nome das imagens disponíveis
+                oci compute image list -c $TENANT --output table --query 'data[*].{"Image Name":"display-name"}'
+                oci compute image list -c $TENANT --output table --query 'data[*].{"ID":"id","Image Name":"display-name"}'
+
+3 - Lista os block Volumes Criados 
+                oci bv volume list -c $COMPART
+                oci bv volume list -c $COMPART  --output table --query 'data[*].{"Image Name":"display-name"}'
+
+4 - Faz start/STOP da instancia ja criada 
+                 oci compute instance action --action START --instance-id $INST_ID
+
+5 - Lista os nomes das VM's criadas : 
+                oci compute instance list -c $COMPART  --output table --query 'data[*].{"Image Name":"display-name"}'
+
+6 - Lista os AD's da regiao
+                oci iam availability-domain list -c $TENANT --output table --query 'data[*]."name"'
+
+7 - Cria Block volume
+                oci bv volume create --availability-domain BqXt:SA-SAOPAULO-1-AD-1 -c $COMPART --display-name disk-tst --size-in-gbs 50 --vpus-per-gb 0
+
+8 - Remove o Block volume
+                oci bv volume delete  --volume-id ocid1.volume.oc1.sa-saopaulo-1.ab.......
+
+9 - Pega o OCID da VCN
+                [opc@vm-free .oci]$ oci network vcn list -c $COMPART  --output table --query 'data[*].{"OCID":"id"}'
+
+10 - Lista OCID das subnets
+                oci network subnet list -c $COMP_NET  --output table --query 'data[*].{"Display Name":"display-name","OCID":"id"}'
+
+11 - Cria VM
+                oci compute instance launch --availability-domain BqXt:SA-SAOPAULO-1-AD-1 --compartment-id $COMPART --shape VM.Standard.E2.1.Micro --subnet-id $SUBN_PUB --assign-public-ip true --display-name vm-cli-01 --image-id $IMD_ID --ssh-authorized-keys-file $HOME/pub.key
+
+
+
+oci bv volume list --compartment-id $COMPART --display-name disk_10_500G  --output table --query 'data[*].{"Nome":"display-name","VPU":"vpus-per-gb"}'
+
+
+oci bv volume-group list --compartment-id $COMPART --output table --query 'data[*].{"Nome":"display-name"}'
+
+oci bv backup list --compartment-id $COMPART --display-name disk_01_500G
