@@ -41,6 +41,7 @@ sudo yum install git -y  2>&1 >> setup.log
 cd /home/opc 2>&1 >> setup.log
 git clone https://github.com/valdecircarvalho/oci-fastforward.git 2>&1 >> setup.log
 cd oci-fastforward
+sudo chmod +x *.sh
 clear
 
 # Finishing
