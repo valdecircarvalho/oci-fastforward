@@ -27,19 +27,19 @@ echo -e "$Yellow \n Starting V2... $Color_Off"
 # System Update
 echo -e "$Purple \n Initializing System Updates... $Color_Off"
 
-sudo yum update -y 2>&1 > setup.log
+sudo yum update -y 2>&1 >> setup.log
 
 # Disable Firewall
 echo -e "$Purple \n Initializing System Setup... $Color_Off"
-sudo systemctl stop firewalld 2>&1 > setup.log
-sudo systemctl disable firewalld 2>&1 > setup.log
-sudo systemctl mask firewalld 2>&1 > setup.log
+sudo systemctl stop firewalld 2>&1 >> setup.log
+sudo systemctl disable firewalld 2>&1 >> setup.log
+sudo systemctl mask firewalld 2>&1 >> setup.log
 
 # Install Tools
 echo -e "$Purple \n Initializing Tools Instalation... $Color_Off"
-sudo yum install git -y  2>&1 > setup.log
-cd /home/opc 2>&1 > setup.log
-git clone https://github.com/valdecircarvalho/oci-fastforward.git 2>&1 > setup.log
+sudo yum install git -y  2>&1 >> setup.log
+cd /home/opc 2>&1 >> setup.log
+git clone https://github.com/valdecircarvalho/oci-fastforward.git 2>&1 >> setup.log
 cd /home/opc/oci-fastforward 
 
 
