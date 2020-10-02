@@ -40,8 +40,10 @@ echo -e "$Purple \n Initializing Tools Instalation... $Color_Off"
 sudo yum install git -y  2>&1 >> setup.log
 cd /home/opc 2>&1 >> setup.log
 git clone https://github.com/valdecircarvalho/oci-fastforward.git 2>&1 >> setup.log
+sleep 5
 cd oci-fastforward
 sudo chmod +x *.sh
+sudo sed -i -e 's/\r$//' /home/opc/oci-fastforward/*.sh
 clear
 
 # Finishing
