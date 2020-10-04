@@ -22,7 +22,7 @@ clear
 
 
 # Starting
-echo -e "$Yellow \n Starting V7... $Color_Off"
+echo -e "$Yellow \n Starting V1... $Color_Off"
 
 # System Update
 echo -e "$Cyan \n Initializing System Updates... $Color_Off"
