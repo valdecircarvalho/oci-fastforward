@@ -21,7 +21,7 @@ Cyan='\033[0;36m'         # Cyan
 clear
 
 # Initializing apache deploy
-echo -e "$Purple \n Initializing Apache deploy... $Color_Off"
+echo -e "$Yello \n Initializing Apache deploy... $Color_Off"
 
 ## Install Apache
 echo -e "$Cyan \n Installing Apache Server... $Color_Off"
@@ -35,7 +35,10 @@ sudo systemctl enable httpd 2>&1 >deployapache.log
 # Deploy sample website
 echo -e "$Cyan \n Deploying sample website... $Color_Off"
 sudo cp /home/opc/oci-fastforward/server-info.php /var/www/html/index.php 2>&1 >deployapache.log
-
+sudo cp -R /home/opc/oci-fastforward/app2/ /var/www/html/app2 2>&1 >deployappache.log
+sudo cp -R /home/opc/oci-fastforward/app1/ /var/www/html/app1 2>&1 >deployappache.log
+sudo cp -R /home/opc/oci-fastforward/app-cat/ /var/www/html/app-cat 2>&1 >deployappache.log
+sudo cp -R /home/opc/oci-fastforward/app-dog/ /var/www/html/app-dog 2>&1 >deployappache.log
 clear 2>&1 >deployapache.log
 sleep 5 2>&1 >deployapache.log
 
